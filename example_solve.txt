@@ -1,0 +1,163 @@
+1. white
+2. red
+3. orange
+4. orange
+5. yellow
+6. yellow
+7. red
+8. red
+9. yellow
+10. yellow
+11. orange inverted
+12. green
+13. white
+14. white
+15. red
+16. white
+17. white
+18. Oriented Cross
+19. orange
+20. white inverted
+21. green
+22. white
+23. blue
+24. white inverted
+25. orange
+26. white
+27. red
+28. white inverted
+29. blue
+30. white
+31. green
+32. white inverted
+33. red
+34. white
+35. Cross Completed!
+36. green inverted
+37. yellow
+38. green
+39. orange inverted
+40. yellow
+41. orange
+42. yellow inverted
+43. blue inverted
+44. yellow
+45. blue
+46. red inverted
+47. yellow
+48. red
+49. Corners
+50. green inverted
+51. yellow inverted
+52. green
+53. yellow
+54. green inverted
+55. yellow inverted
+56. green
+57. Corners Oriented
+58. green
+59. yellow inverted
+60. green inverted
+61. yellow inverted
+62. red inverted
+63. yellow
+64. red
+65. yellow
+66. blue inverted
+67. yellow
+68. blue
+69. yellow
+70. red
+71. yellow inverted
+72. red inverted
+73. yellow
+74. orange inverted
+75. yellow
+76. orange
+77. yellow
+78. blue
+79. yellow inverted
+80. blue inverted
+81. yellow
+82. yellow
+83. red inverted
+84. yellow
+85. red
+86. yellow
+87. green
+88. yellow inverted
+89. green inverted
+90. Finished Second Layer Edges!
+91. yellow
+92. red
+93. green
+94. yellow
+95. green inverted
+96. yellow inverted
+97. red inverted
+98. Third Layer Cross
+99. yellow inverted
+100. Oriented Third Layer Cross
+101. green
+102. yellow inverted
+103. blue inverted
+104. yellow
+105. green inverted
+106. yellow inverted
+107. blue
+108. yellow
+109. Third Layer Corners
+110. green inverted
+111. white inverted
+112. green
+113. white
+114. green inverted
+115. white inverted
+116. green
+117. white
+118. green inverted
+119. white inverted
+120. green
+121. white
+122. green inverted
+123. white inverted
+124. green
+125. white
+126. yellow
+127. yellow
+128. green inverted
+129. white inverted
+130. green
+131. white
+132. green inverted
+133. white inverted
+134. green
+135. white
+136. green inverted
+137. white inverted
+138. green
+139. white
+140. green inverted
+141. white inverted
+142. green
+143. white
+144. yellow
+145. green inverted
+146. white inverted
+147. green
+148. white
+149. green inverted
+150. white inverted
+151. green
+152. white
+153. green inverted
+154. white inverted
+155. green
+156. white
+157. green inverted
+158. white inverted
+159. green
+160. white
+161. yellow
+162. Oriented Last Corners!
+163. Solved!
