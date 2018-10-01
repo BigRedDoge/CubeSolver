@@ -11,6 +11,15 @@ class Positions {
     this.cornerpos = [];
   }
 
+  updateSides(w, g, r, b, o, y) {
+    this.w = w;
+    this.g = g;
+    this.r = r;
+    this.b = b;
+    this.o = o;
+    this.y = y;
+  }
+
   getEdges() {
     /*
       Edge 0: w1, o1

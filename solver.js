@@ -1,32 +1,51 @@
 var CubeMap = require('./CubeMap.js');
 var GetPositions = require('./Positions');
 
-var w = ['w0', 'w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8'];
-var g = ['g0', 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8'];
-var r = ['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8'];
-var b = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
-var o = ['o0', 'o1', 'o2', 'o3', 'o4', 'o5', 'o6', 'o7', 'o8'];
-var y = ['y0', 'y1', 'y2', 'y3', 'y4', 'y5', 'y6', 'y7', 'y8'];
+var options = {
+  mode: 'json',
+  pythonPath: '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6',
+  pythonOptions: ['-u'],
+  scriptPath: '/Users/Sean/Desktop/TradeBot/CubeSolver'
+};
+var { PythonShell } = require('python-shell', options);
+
+
+var w, r, b, o, g, y;
 var solution = [];
+//var prev;
+/*
+w = ['y0', "b1", "w8", "r1", "w4", "b5", "o6", "w1", "r0"];
+r = ["y8", "o1", "w6", "g1", "r4", "b7", "g0", "y1", "b2"];
+b = ["g2", "o3", "r2", "y5", "b4", "g3", "w2", "r3", "y2"];
+o = ["b0", "w5", "r6", "o5", "o4", "y7", "r8", "b3", "g6"];
+g = ["g8", "w7", "b8", "o7", "g4", "w3", "y6", "y3", "w0"];
+y = ["o2", "r7", "o0", "g7", "y4", "g5", "o8", "r5", "b6"];
+*/
 
-// Test Scramble
-turn90('blue');
-turn90('orange');
-turn90('red');
-turn90('white');
-turn90('yellow');
-turn90('green');
-turn90('white');
-turn90('red');
-turn90('yellow');
-
-cross();
+PythonShell.run('colordetection.py', options, function (err, results) {
+    if (err) throw err;
+    res = results[0];
+    w = res.w;
+    r = res.r;
+    b = res.b;
+    o = res.o;
+    g = res.g;
+    y = res.y;
+    console.log('White Side: %s', w);
+    console.log('Red Side: %s', r);
+    console.log('Blue Side: %s', b);
+    console.log('Orange Side: %s', o);
+    console.log('Green Side: %s', g);
+    console.log('Yellow Side: %s', y);
+    cross();
+});
 
 function turn90(color) {
-  let prev = new CubeMap(w, g, r, b, o, y);
-
+  var prev = new CubeMap(w, g, r, b, o, y);
+  //prev.updateMap(w, g, r, b, o, y);
   // Blue Clockwise
   if (color === 'blue') {
+    //console.log('blue');
     solution.push("blue");
 
     // Blue Corners
@@ -68,6 +87,7 @@ function turn90(color) {
   }
   // White Clockwise
   if (color === 'white') {
+    //console.log('white');
     solution.push("white");
 
     // Blue Corners
@@ -109,6 +129,7 @@ function turn90(color) {
   }
 
   if (color === 'green') {
+    //console.log('green');
     solution.push("green");
 
     // Yellow Corners
@@ -150,6 +171,7 @@ function turn90(color) {
   }
 
   if (color === 'red') {
+    //console.log('red');
     solution.push("red");
 
     // Yellow Corners
@@ -191,6 +213,7 @@ function turn90(color) {
   }
 
   if (color === 'yellow') {
+    //console.log('yellow');
     solution.push("yellow");
 
     // Yellow Corners
@@ -232,6 +255,7 @@ function turn90(color) {
   }
 
   if (color === 'orange') {
+    //console.log('orange');
     solution.push("orange");
 
     // Yellow Corners
@@ -279,6 +303,7 @@ function turn270(color) {
 
 function cross() {
   var edgepos = new GetPositions(w, g, r, b, o, y);
+//  edgepos.updateSides(w, g, r, b, o, y);
   var edges = edgepos.getEdges();
   var edgecolors = edgepos.edgeColors();
   if (edgecolors[0].indexOf("White") === 0 && edgecolors[1].indexOf("White") === 0 && edgecolors[2].indexOf("White") === 0 && edgecolors[3].indexOf("White") === 0) {
@@ -415,6 +440,7 @@ function cross() {
 
 function crossOrientation() {
   var edgepos = new GetPositions(w, g, r, b, o, y);
+  edgepos.updateSides(w, g, r, b, o, y);
   edgepos.getEdges();
   var edgecolors = edgepos.edgeColors();
   if (edgecolors[0] !== 'WhiteOrange') {
@@ -538,6 +564,7 @@ function crossOrientation() {
 }
 function crossColorOrientation() {
   var edgepos = new GetPositions(w, g, r, b, o, y);
+  edgepos.updateSides(w, g, r, b, o, y);
   edgepos.getEdges();
   if (w[1] === 'w1' && w[5] === 'w5' && w[7] === 'w7' && w[3] === 'w3') {
     solution.push("Cross Completed!");
@@ -732,19 +759,17 @@ function firstLayerCorners() {
             turn270('yellow');
             turn270('green');
           } else if (index === 5) {
+            turn90('green');
             turn270('yellow');
-            turn270('blue');
-            turn90('yellow');
-            turn90('blue');
+            turn270('green');
           } else if (index === 6) {
-            turn90('red');
+            turn270('red');
             turn270('yellow');
-            turn270('red');
-          } else if (index === 7) {
             turn90('red');
-            turn90('yellow');
-            turn90('yellow');
+          } else if (index === 7) {
             turn270('red');
+            turn90('yellow');
+            turn90('red');
           }
           firstLayerCorners();
       } else {
@@ -1311,10 +1336,10 @@ function secondLayerEdges() {
 
 function thirdLayerCross() {
   var crossColors = [
-    (y[1].replace(/[0-9]/g, '')),
-    (y[3].replace(/[0-9]/g, '')),
-    (y[5].replace(/[0-9]/g, '')),
-    (y[7].replace(/[0-9]/g, ''))
+    (y[1].replace(/[0-9]/, '')),
+    (y[3].replace(/[0-9]/, '')),
+    (y[5].replace(/[0-9]/, '')),
+    (y[7].replace(/[0-9]/, ''))
   ];
   var adjust = 0;
   function checkElbow() {
@@ -1502,19 +1527,29 @@ function thirdLayerCorners() {
   if (cornerColors[4] === "Corner4" && cornerColors[5] === "Corner5" && cornerColors[6] === "Corner6" && cornerColors[7] === "Corner7") {
     solution.push("Third Layer Corners");
     orientThirdCorners();
-    return;
   } else if (cornerColors[4] === "Corner4") {
     turn90('yellow');
     cornerSwap();
+    thirdLayerCorners();
   } else if (cornerColors[5] === "Corner5") {
     cornerSwap();
+    turn90('yellow');
+    thirdLayerCorners();
   } else if (cornerColors[6] === "Corner6") {
     turn270('yellow');
     cornerSwap();
+    turn90('yellow');
+    turn90('yellow');
+    thirdLayerCorners();
   } else if (cornerColors[7] === "Corner7") {
     turn90('yellow');
     turn90('yellow');
     cornerSwap();
+    turn270('yellow');
+    thirdLayerCorners();
+  } else {
+    cornerSwap();
+    thirdLayerCorners();
   }
 
   function cornerSwap() {
@@ -1525,7 +1560,6 @@ function thirdLayerCorners() {
     turn270('green');
     turn270('yellow');
     turn90('blue');
-    thirdLayerCorners();
   }
 }
 
@@ -1536,7 +1570,6 @@ function orientThirdCorners() {
   let corner5 = cornerPos[5][0];
   let corner6 = cornerPos[6][0];
   let corner7 = cornerPos[7][0];
-
   if (corner4 === 'y0' && corner5 === 'y2' && corner6 === 'y8' && cornerPos7 === 'y6') {
     solution.push('Oriented Last Corners!');
     solve();
@@ -1601,7 +1634,7 @@ function orientThirdCorners() {
       turn90('yellow');
       solution.push("Oriented Last Corners!");
       solve();
-    } else if (corner6 === 'b6') {
+    } else if (corner5 === 'b6') {
       cornerOrient();
       turn90('yellow');
       solution.push("Oriented Last Corners!");
