@@ -9,20 +9,10 @@ var options = {
 };
 var { PythonShell } = require('python-shell', options);
 
-
 var w, r, b, o, g, y;
 var solution = [];
-//var prev;
-/*
-w = ['y0', "b1", "w8", "r1", "w4", "b5", "o6", "w1", "r0"];
-r = ["y8", "o1", "w6", "g1", "r4", "b7", "g0", "y1", "b2"];
-b = ["g2", "o3", "r2", "y5", "b4", "g3", "w2", "r3", "y2"];
-o = ["b0", "w5", "r6", "o5", "o4", "y7", "r8", "b3", "g6"];
-g = ["g8", "w7", "b8", "o7", "g4", "w3", "y6", "y3", "w0"];
-y = ["o2", "r7", "o0", "g7", "y4", "g5", "o8", "r5", "b6"];
-*/
 
-PythonShell.run('colordetection.py', options, function (err, results) {
+PythonShell.run('color_detection.py', options, function (err, results) {
     if (err) throw err;
     res = results[0];
     w = res.w;
@@ -42,7 +32,6 @@ PythonShell.run('colordetection.py', options, function (err, results) {
 
 function turn90(color) {
   var prev = new CubeMap(w, g, r, b, o, y);
-  //prev.updateMap(w, g, r, b, o, y);
   // Blue Clockwise
   if (color === 'blue') {
     //console.log('blue');
