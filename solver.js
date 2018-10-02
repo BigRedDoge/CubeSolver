@@ -1,5 +1,5 @@
-var CubeMap = require('./lib/CubeMap.js');
-var GetPositions = require('./lib/Positions.js');
+var CubeMap = require('/lib/CubeMap.js');
+var GetPositions = require('/lib/Positions.js');
 
 var options = {
   mode: 'json',
