@@ -4,6 +4,9 @@ This is a Rubik's Cube solver written in Python and Javascript.  It takes in pic
  
 #### To run the program: node solver.js 
 
+Before running: You have to update pythonPath (path to python) and scriptPath (path to CubeSolver folder) in solver.js
+
 Dependencies: 
   * python-shell — npm install python-shell  
   * cv2 — pip install opencv-python 
+
