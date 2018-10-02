@@ -3,9 +3,9 @@ var GetPositions = require('./Positions');
 
 var options = {
   mode: 'json',
-  pythonPath: '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6',
+  pythonPath: 'path/to/python',
   pythonOptions: ['-u'],
-  scriptPath: '/Users/Sean/Desktop/TradeBot/CubeSolver'
+  scriptPath: 'Full Path to CubeSolver Folder'
 };
 var { PythonShell } = require('python-shell', options);
 
